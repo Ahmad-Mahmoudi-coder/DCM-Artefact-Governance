@@ -1,10 +1,11 @@
-# Citation metadata for this archive, release v1.0.0. Code: MIT (LICENSE); original data and
-# documentation: CC BY 4.0 (LICENSE-DATA.md); third-party values excluded. No DOI has been assigned.
+# Citation metadata for this archive, release v1.0.1. Code: MIT (LICENSE); original data and
+# documentation: CC BY 4.0 (LICENSE-DATA.md); third-party values excluded. Zenodo archive
+# metadata are in .zenodo.json; any archive DOI is shown on the Zenodo record, not in this file.
 cff-version: 1.2.0
 message: "If you use this software or data, please cite this release."
 type: software
 title: "DCM Artefact Governance: research-software and artefact archive"
-version: "1.0.0"
+version: "1.0.1"
 repository-code: "https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance"
 license:
   - MIT

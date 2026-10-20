@@ -1,13 +1,13 @@
 # DCM Artefact Governance: research-software and artefact archive
 
-> **Release v1.0.0.** Research-software and artefact archive accompanying the DCM Artefact Governance paper. The manuscript is not included.
+> **Release v1.0.1.** Research-software and artefact archive accompanying the DCM Artefact Governance paper. The manuscript is not included.
 >
 > | Field | Value |
 > |---|---|
 > | Author | Seyed Ahmad Mahmoudi Lahijani, Auckland University of Technology, ORCID [0000-0002-5086-5745](https://orcid.org/0000-0002-5086-5745) |
 > | Repository | <https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance> |
-> | Release tag | `v1.0.0` |
-> | Archive DOI | None. This release has not been deposited in Zenodo or any other archive |
+> | Release tag | `v1.0.1` |
+> | Archive DOI | Assigned by Zenodo when this release is archived and shown on the Zenodo record; not recorded in this file. Release v1.0.0 was received by Zenodo but not archived |
 > | Licence | Code: MIT (`LICENSE`). Original data and documentation: CC BY 4.0 (`LICENSE-DATA.md`). Third-party values excluded (see *Licensing*) |
 
 This repository is the research-software and artefact archive accompanying the DCM Artefact
@@ -190,14 +190,17 @@ private research record; those documents are not part of this release.
   `DATA_SOURCES.md` and located file by file in `EECA_CONTENT_INVENTORY.csv`. They remain subject to
   their source's terms. Where they appear inside a file that is otherwise licensed, the licence
   covers the rest of that file only.
+- **Zenodo record.** A Zenodo record holds a single licence identifier, so its licence field shows
+  MIT. The record description states the CC BY 4.0 licence for original data and documentation and
+  the exclusion of the EECA-derived values. The licence files in this repository are authoritative.
 
 ## Citation
 
 Please cite this release. Machine-readable metadata are in `CITATION.cff`.
 
 - **This archive:** Mahmoudi Lahijani, S. A. (2026). *DCM Artefact Governance: research-software
-  and artefact archive* (Version 1.0.0) [Software]. GitHub.
-  https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance/releases/tag/v1.0.0
+  and artefact archive* (Version 1.0.1) [Software]. GitHub.
+  https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance/releases/tag/v1.0.1
 - **Associated paper:** the DCM Artefact Governance paper, *An Artefact-Level Governance Pattern for
   Model Outputs Under Deep Uncertainty*, is in preparation. Its full reference will be added here
   on publication.

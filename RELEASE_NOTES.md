@@ -1,5 +1,23 @@
 # Release notes
 
+## v1.0.1 (prepared 21 October 2026)
+
+Metadata-only release so that Zenodo can archive the repository. Zenodo received the GitHub release
+`v1.0.0` but did not archive it ("Citation metadata load failed"). The most likely cause is the
+two-entry `license` list in `CITATION.cff`, which Zenodo's GitHub import does not map to its single
+licence field.
+
+- Added `.zenodo.json`, which Zenodo uses in place of `CITATION.cff` when archiving GitHub
+  releases. It records the licence field as MIT and states in the description that original data
+  and documentation are CC BY 4.0 and that EECA-derived values are excluded from both licences.
+- `CITATION.cff`: version 1.0.1; both licences retained for GitHub citation.
+- README: release tag, archive-DOI row, citation and a note on the Zenodo licence field.
+- Licensing unchanged: `LICENSE` (MIT), `LICENSE-DATA.md` (CC BY 4.0), EECA-derived values excluded.
+- `PROVENANCE.csv` and `MANIFEST.sha256` updated for the changed and added files.
+- No code, schema, input, artefact, expected value or figure changed. `python reproduce.py`:
+  27 steps, all passing in a clean CPython 3.12 environment.
+- The v1.0.0 tag and GitHub release are unchanged.
+
 ## v1.0.0 (prepared 21 October 2026)
 
 First release of the research-software and artefact archive accompanying the DCM Artefact
