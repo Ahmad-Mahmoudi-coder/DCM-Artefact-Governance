@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dcm.local/schemas/artefacts/incremental_electricity_pack/v1.0-current",
+  "title": "IncrementalElectricityPack (v1.0-current)",
+  "description": "Structural validation schema for the IncrementalElectricityPack artefact family, v1.0-current layer only. This schema validates the fields the Edendale process-heat proof-of-concept repository actually produces today; it does NOT implement the manuscript's fuller aspirational schema (Sub-Module SM-3.5-A, Schema Version 1.0), which is tracked separately as a future v1.1-target schema, not yet created. The normative source for this artefact family is docs/03_artifact_contract_specification.qmd (revised); this schema is its machine-readable implementation. Any divergence discovered between this schema and that document is a defect requiring a decision-log entry and version update (docs/00b_phase1_decision_log.md), not a silent correction of either file. This schema implements structural validation only: required-field presence, type, controlled-vocabulary (enum/const) membership, and numeric bounds. It does NOT implement derivation checks (e.g. that peak_incremental_mw equals the maximum of the source hourly trace), foreign-key resolution (e.g. that run_id or future_id resolve to real registered records), or unit validation, all of which require an external validator not yet built (see docs/08_incremental_electricity_schema_specification_plan.qmd Section 6). additionalProperties is false: only the eleven required fields below and the three optional fields (validation_outcome, warning_codes, qualification_codes) are permitted; any other field causes validation to fail, per the authorisation decision in docs/08a_incremental_electricity_schema_authorisation.md Decision 1, as extended by docs/83 for the third optional field.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artefact_id",
+    "schema_version",
+    "artefact_family",
+    "site_id",
+    "run_id",
+    "future_id",
+    "pathway_id",
+    "epoch",
+    "annual_incremental_mwh",
+    "peak_incremental_mw",
+    "p95_incremental_mw"
+  ],
+  "properties": {
+    "artefact_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Globally unique identifier for this artefact instance. Assembled at construction time; no repository file currently assigns this value (docs/03 Section 5)."
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "v1.0-current",
+      "description": "Declares which contract layer this artefact instance conforms to. Fixed to 'v1.0-current'; an artefact declaring 'v1.1-target' should be validated against the separate, not-yet-created v1.1-target schema instead."
+    },
+    "artefact_family": {
+      "type": "string",
+      "const": "IncrementalElectricityPack",
+      "description": "Fixed family label."
+    },
+    "site_id": {
+      "type": "string",
+      "enum": [
+        "edendale_fonterra"
+      ],
+      "description": "Identifies which site produced this artefact. Assembled; the current PoC is single-site, so exactly one value is currently registered. Widening this enum to add a further site is a backward-compatible schema revision (docs/08 Section 9)."
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Producing-run reference. Typed as a string (not UUID), matching the repository's human-readable run_manifest.json convention, e.g. '20260106_085759_epoch2035_demandpack_2035' (docs/03b Decision 1). No stricter pattern is enforced at this schema revision; see docs/08 Section 5 for the rationale and the note on this as a candidate future refinement. Unit: none (identifier)."
+    },
+    "future_id": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 63,
+      "description": "FutureArtefact reference. Typed as an integer 0-63, matching FutureArtefact's own indexing (docs/03b Decision 2a). This bounds check independently catches some, but not all, unresolved future_id values; full foreign-key resolution against the registered FutureArtefact set requires an external validator (docs/08a Decision 2). Unit: none (identifier)."
+    },
+    "pathway_id": {
+      "type": "string",
+      "enum": [
+        "2035_EB",
+        "2035_BB",
+        "committed_prefix"
+      ],
+      "description": "Identifies which pathway variant this artefact belongs to. Assembled from the repository's combined epoch_tag string (docs/03 Section 4)."
+    },
+    "epoch": {
+      "type": "integer",
+      "enum": [
+        2020,
+        2025,
+        2028,
+        2035
+      ],
+      "description": "Planning year. Assembled from the repository's combined epoch_tag string. Enumerated to the confirmed set of registered epochs rather than an open numeric range, so a mistyped or unregistered year is caught structurally (docs/08 Section 5). Unit: planning year."
+    },
+    "annual_incremental_mwh": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total incremental electrical energy over the epoch year. Directly present under a different name and unit in repository output (annual_energy_GWh x 1000). Should reconcile with the hourly source trace sum x time-step; this reconciliation is a derivation check not enforced by this schema (docs/03 Section 7; docs/08 Section 6). Unit: MWh."
+    },
+    "peak_incremental_mw": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Maximum hourly incremental load over the epoch year. Directly present under a different name in repository output (peak_MW). Must equal the maximum of the source hourly trace; this derivation check is not enforced by this schema and requires an external validator (docs/03 Section 7; docs/08 Section 6). Unit: MW."
+    },
+    "p95_incremental_mw": {
+      "type": "number",
+      "minimum": 0,
+      "description": "95th-percentile hourly incremental load over the epoch year. Directly present under a different name in repository output (p95_MW). Must equal the 95th percentile of the source hourly trace; this derivation check is not enforced by this schema and requires an external validator. Should never exceed peak_incremental_mw; this cross-field constraint is not expressible in this schema and is noted here for implementers only (docs/03 Section 7; docs/08 Section 5, Section 6). Unit: MW."
+    },
+    "validation_outcome": {
+      "type": "string",
+      "enum": [
+        "not_run",
+        "pass",
+        "pass_with_warning",
+        "manual_review_required",
+        "fail"
+      ],
+      "description": "Optional. Result of the most recent gate-execution run against this artefact instance, per the framework-wide vocabulary (docs/04 Section 6). Not required at v1.0-current. The current generator (`tools/build_incremental_electricity_pack_anchor21_from_real_outputs.py`) populates this field with a fixed value of `'manual_review_required'` on every instance it produces (docs/29 Section 6), reflecting that these artefacts have not passed a full automated validation-gate pass — not the result of any content-dependent evaluation. No producing module currently varies this value by artefact content or executes a full gate-execution pass. Distinct from `lifecycle_status`, which is not part of the v1.0-current schema at all (docs/04 Section 5; docs/03 Section 5 Group A)."
+    },
+    "warning_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "MISSING_WINTER_PEAK_SHARE",
+          "MISSING_SHAPE_CLUSTER_LABEL",
+          "MISSING_CHECKSUM",
+          "MISSING_OPTIONAL_PROVENANCE",
+          "SOURCE_TRACE_NOT_DECLARED",
+          "MANUAL_ASSEMBLY_REQUIRED",
+          "FUTURE_EXTENSION_FIELD_ABSENT"
+        ]
+      },
+      "uniqueItems": true,
+      "description": "Optional. Controlled-vocabulary list of specific, named, non-blocking shortfalls attached when validation_outcome is 'pass_with_warning' (docs/04 Section 7; docs/04a_validation_vocabulary_table.csv). Restricted to the subset of the global and family-specific warning-code vocabulary applicable to IncrementalElectricityPack (docs/08 Section 7). Not required at v1.0-current. uniqueItems: true prevents the same warning code being listed more than once on a single artefact instance."
+    },
+    "qualification_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "FIELD_INVARIANT_ACROSS_FUTURES_WITHIN_PATHWAY"
+        ]
+      },
+      "uniqueItems": true,
+      "description": "Optional. Controlled-vocabulary list of qualification-stage findings about this artefact instance -- statements about what a downstream consumer needs to know before using specific declared field values for a particular decision. Distinct from validation_outcome/warning_codes, which report validation-stage gate-execution results (docs/04 Section 6-7) and are not required to hold any particular value for a qualification code to be present or absent here; also distinct from schema-structural conformity and trace-evidential validity, neither of which this field speaks to. Not required at v1.0-current. uniqueItems: true prevents the same qualification code being listed more than once on a single artefact instance. See docs/81, docs/82, docs/83 for the governance rationale and the closed vocabulary's current single member and its meaning."
+    }
+  }
+}

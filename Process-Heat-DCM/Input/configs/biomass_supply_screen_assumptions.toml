@@ -1,0 +1,127 @@
+# Biomass Supply Screen Assumptions (Canonical, PoC v2 extension)
+# Location: Input/configs/biomass_supply_screen_assumptions.toml
+#
+# Authorised by docs/67_biomass_supply_evidence_reconciliation_and_screening_test.qmd,
+# following the evidence-acquisition/gate specification in docs/66 and the minimum
+# model specification in docs/65. This is a POST-HOC, NON-MUTATING diagnostic screen
+# only -- it does NOT modify dispatch, does NOT change the production biomass price
+# (Input/signals/signals_config.toml biomass_price_nzd_per_MWh_fuel = 42.0, unchanged),
+# and is NOT a dispatch-integrated resource constraint. See docs/67 Section 12/17 for
+# the dispatch-integration gate decision and its reasoning.
+#
+# Evidence basis: EECA Southland RETA Phase One Report (SRC-NZ-EECA-RETASOUTHLANDPHASE1-2022),
+# Section 7.6 (near-term resource categories, PUBLISHED_REPORTED) and Table 2/Figure 17
+# (delivered-cost tiers, PUBLISHED_REPORTED); references/evidence_register.csv EV-0050,
+# EV-0051, EV-0052, EV-0054, EV-0055. The mapping between the four §7.6 resource
+# categories and Table 2's five cost tiers is this task's own interpretive construction
+# (DERIVED_FROM_PUBLISHED_DATA), not an explicit source cross-reference -- see docs/67
+# Section 5/9 for the full reasoning. Pruned sawlogs (Tier 5) has NO quantity given in
+# the near-term total and is retained here as an open/unbounded high-cost tail, not a
+# quantified block -- BB1's screened requirement does not reach it (docs/67 Section 14).
+#
+# No probability is assigned to any tier or scenario. Values here are candidate/
+# provisional model inputs (inputs/model_input_register.csv), not adopted production
+# defaults. The production biomass price remains the unconditional flat 42 NZD/MWh_fuel
+# assumption in signals_config.toml -- this file does not change it.
+
+[moisture_and_energy_basis]
+# Source: EECA Southland RETA Report, footnote 47 p.53 and footnote 51 p.55.
+moisture_fraction = 0.55
+ncv_gj_per_tonne = 7.184
+# GJ_per_MWh conversion is a fixed physical constant (3.6), not an evidence item.
+gj_per_mwh = 3.6
+
+[regional_pool_near_term]
+# Southland near-term accessible woody biomass supply, EECA RETA Section 7.6 (EV-0054).
+# "A total average resource availability has been estimated at 380,500t per annum,
+# equivalent to 2,738TJ of supply" -- stated by the source to be maintained
+# approximately constant across the 2023-2037 window (Section 7.6), NOT a declining
+# physical resource; what changes by year in the source's own Figures 20-22 is
+# REGIONAL COMPETING DEMAND against this constant base, not the base itself (EV-0055).
+total_tonnes_per_year = 380500.0
+total_tj_per_year = 2738.0
+# This is a REGIONAL POOL (Southland-wide), NOT a BB1 site-specific ceiling. BB1 is
+# one potential claimant on this pool alongside other RETA process-heat sites -- see
+# docs/67 Section 10 (competing-demand treatment, unresolved for future regional demand).
+
+[[supply_tiers]]
+# Tier 1: Processor residues and billetwood (EECA RETA Table 2 + Section 7.6 "unutilised
+# processing residues"). PUBLISHED_REPORTED quantity and cost.
+tier_id = 1
+label = "Processor residues and billetwood"
+tonnes_per_year = 4000.0
+tj_per_year = 28.0
+cost_nzd_per_gj_low = 9.0
+cost_nzd_per_gj_high = 9.0
+evidence_note = "EV-0052 (cost), EV-0054 (quantity). Cost delivered to user's site, illustrative 60km transport."
+
+[[supply_tiers]]
+# Tier 2: In-forest residues (EECA RETA Table 2 + Section 7.6 "unutilised harvesting residues").
+tier_id = 2
+label = "In-forest / harvesting residues"
+tonnes_per_year = 76500.0
+tj_per_year = 550.0
+cost_nzd_per_gj_low = 11.0
+cost_nzd_per_gj_high = 12.0
+evidence_note = "EV-0052 (cost), EV-0054 (quantity)."
+
+[[supply_tiers]]
+# Tier 3: Domestic pulp logs and export chip (EECA RETA Table 2 + Section 7.6 "export chip
+# volumes with diversion availability within 6-12 months"). Domestic pulp logs themselves
+# are excluded (contracted to Daiken's MDF plant per Section 7.6) -- only the export-chip
+# portion (50,000t) is counted as accessible near-term supply.
+tier_id = 3
+label = "Export chip (domestic pulp logs excluded, contracted elsewhere)"
+tonnes_per_year = 50000.0
+tj_per_year = 360.0
+cost_nzd_per_gj_low = 14.0
+cost_nzd_per_gj_high = 14.0
+evidence_note = "EV-0052 (cost), EV-0054 (quantity)."
+
+[[supply_tiers]]
+# Tier 4: Export logs, grades KIS/KI/K/A (EECA RETA Table 2 + Section 7.6 "export
+# low-grade logs").
+tier_id = 4
+label = "Export logs (grades KIS, KI, K, A)"
+tonnes_per_year = 250000.0
+tj_per_year = 1800.0
+cost_nzd_per_gj_low = 18.0
+cost_nzd_per_gj_high = 23.0
+evidence_note = "EV-0052 (cost), EV-0054 (quantity)."
+
+[[supply_tiers]]
+# Tier 5: Pruned sawlogs. Cost is PUBLISHED_REPORTED; QUANTITY IS UNRESOLVED -- no
+# tonnage is given anywhere in the near-term 380,500t total for this tier (it lies
+# outside that envelope). Retained here as an open/unbounded tail for completeness
+# and for the merit-order crossover check (docs/67 Section 16); NOT included in the
+# 380,500t total_tonnes_per_year/total_tj_per_year figures above, and NOT drawn upon
+# unless BB1's screened requirement exceeds the sum of Tiers 1-4 (it does not -- see
+# docs/67 Section 14).
+tier_id = 5
+label = "Pruned sawlogs (quantity UNRESOLVED, cost only)"
+tonnes_per_year = "UNRESOLVED"
+tj_per_year = "UNRESOLVED"
+cost_nzd_per_gj_low = 28.0
+cost_nzd_per_gj_high = 28.0
+evidence_note = "EV-0052 (cost only). Section 7.6 does not quantify this tier within the near-term total; Section 7.8-7.9/Figure 22 (EV-0055) indicates it is only reached under a region-wide Biomass Centric demand scenario by 2033-37, not by BB1 alone at its currently-derived requirement."
+
+[price_basis]
+# Section 11 of docs/67 task / Section 6 of docs/67 document.
+status = "PRICE_BASIS_PARTIALLY_CONFIRMED"
+note = "Methodology/source confirmed directly from EECA RETA Section 7.7: pulp logs/export logs/pruned sawlogs costed via PF Olsen analysis of AgriHQ Forestry Log Price Report (Southern South Island 3-year average prices to September 2021); processor residues via Ahika cost analysis; in-forest residues via Scion/University of Canterbury/PF Olsen consultation. Real-vs-nominal basis and GST treatment are NOT stated in the held source and remain UNRESOLVED -- per docs/66/docs/67 task instruction, this does not block the diagnostic screen, only future production adoption."
+
+[current_production_comparator]
+# Read-only reference to the current production assumption -- NOT modified by this file.
+flat_price_nzd_per_mwh_fuel = 42.0
+source = "Input/signals/signals_config.toml, biomass_price_nzd_per_MWh_fuel, 2035 epoch. UNCHANGED by this screen."
+
+[merit_order_diagnostic_inputs]
+# Read-only reference values for the merit-order diagnostic (docs/67 Section 16),
+# reproduced from Input/signals/signals_config.toml and site_utilities_2035_BB.csv /
+# site_utilities_2035_EB.csv for the 2035 epoch. NOT modified by this file.
+elec_price_flat_nzd_per_mwh = 110.0
+ets_price_nzd_per_tco2 = 90.0
+bb1_efficiency_th = 0.85
+bb1_co2_factor_t_per_mwh_fuel = 0.0059
+eb_efficiency_th = 0.99
+eb_co2_factor_t_per_mwh_fuel = 0.0

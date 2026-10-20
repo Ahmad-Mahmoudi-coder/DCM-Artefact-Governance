@@ -1,0 +1,68 @@
+{
+  "bundle_version": "gxp_downstream_qualification_consumer_v1",
+  "output_run_id": "gxp_downstream_qualification_consumer_v1",
+  "created_utc": "2026-09-15T02:31:43Z",
+  "authorising_instruction": "User instruction accepting the Next-Revision Evidence & Contribution Decision Report's recommendation, with terminology correction (\"retrospective staged capability comparison\", not \"governance ablation\"); Task A: persist the existing GXP downstream consumer. 2026-09-15.",
+  "script_identity": "Process-Heat-DCM/src/gxp_downstream_qualification_consumer.py",
+  "reused_unmodified_functions_by_direct_import": [
+    "Process-Heat-DCM/src/gxp_rdm_screen.py:load_upgrade_menu",
+    "Process-Heat-DCM/src/gxp_rdm_screen.py:compute_annualised_cost (called internally by evaluate_upgrade_option)",
+    "Process-Heat-DCM/src/gxp_rdm_screen.py:evaluate_upgrade_option"
+  ],
+  "new_logic_added": [
+    "select_adequate_upgrade() -- smallest zero-exceedance upgrade, ascending capacity order (docs/81 section 7 wrapper); not present in gxp_rdm_screen.py"
+  ],
+  "inputs": {
+    "upgrade_menu_toml": "Process-Heat-DCM/Input/configs/grid_upgrades_southland_edendale.toml",
+    "upgrade_menu_toml_sha256": "27f01d0251af423105b678cb105fd7a4292203111cfc15d0ba3f1a57c7133dc1",
+    "futures_csv": "Process-Heat-DCM/Output/runs/dispatch_optimal_subset_canonical_continuous_v1/rdm/futures.csv",
+    "futures_csv_sha256": "435424549ceaf971d5b7e8387a1f62f9d67e86a16c1fcec0810b9c05aaf30673",
+    "artefact_instances": [
+      {
+        "pathway_id": "2035_EB",
+        "future_id": 0,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_EB.future_0.v1.0-current.json",
+        "sha256": "c56201ae8d269a8813ad5e228bb871ced11c9c6b81594492b09c433f7562826e"
+      },
+      {
+        "pathway_id": "2035_EB",
+        "future_id": 5,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_EB.future_5.v1.0-current.json",
+        "sha256": "09da3123f65a6291dd19f85a9e2766f547f26d6e14a20815ff136a5fb18d200b"
+      },
+      {
+        "pathway_id": "2035_EB",
+        "future_id": 20,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_EB.future_20.v1.0-current.json",
+        "sha256": "79a38603226a616dd5cc0dc5237e9ab3ca530622937f3364ce725944083124ce"
+      },
+      {
+        "pathway_id": "2035_BB",
+        "future_id": 0,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_BB.future_0.v1.0-current.json",
+        "sha256": "244330da356bfafd39e082edf412c2e6737f3b56477ba4b5eb9e650cd2ac86c8"
+      },
+      {
+        "pathway_id": "2035_BB",
+        "future_id": 5,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_BB.future_5.v1.0-current.json",
+        "sha256": "d59a9b4bc348fd67bda22412656940f04bc9ae1b7faf547066a0c6485ad2ea79"
+      },
+      {
+        "pathway_id": "2035_BB",
+        "future_id": 20,
+        "path": "artefacts/incremental_electricity_pack/anchor_21_canonical_continuous_v1/incremental_electricity_pack.anchor_21.2035_BB.future_20.v1.0-current.json",
+        "sha256": "1fd1e700ac259683ada3df74b63207e0f11d5d71a1cc29d0697d99554a65eea2"
+      }
+    ]
+  },
+  "comparison_source": "docs/81_phase2_downstream_consumer_qualification_experiment.qmd sections 7-8",
+  "path_a_status": "reproduces docs/81 section 7 (naive consumer) exactly",
+  "path_b_status": "reproduces docs/81 section 8 (governance-aware consumer) exactly; Path B remains an ANALYST-APPLIED interpretation in this script -- qualification_codes is read here only for disclosure in the result table/manifest, and is NOT used programmatically to select between Path A and Path B or to alter any calculation.",
+  "known_flip_case": "2035_EB future_id=5: Path A selects fonterra_opt3_N_plus97MW (97 MW), Path B selects fonterra_opt4_N_plus150MW (150 MW)",
+  "does_not_claim": [
+    "does not claim autonomous discovery of the shared-trace limitation",
+    "does not claim qualification_codes is consumed programmatically by any IEP/GXP script",
+    "does not modify gxp_rdm_screen.py, any schema, any artefact instance, futures.csv, the upgrade-menu TOML, or any existing validation record"
+  ]
+}

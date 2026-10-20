@@ -1,0 +1,52 @@
+# Grid-upgrade screening menu used in the paper's downstream grid-adequacy screen.
+# Options 1-3 (+21 MW N, +32 MW N-1, +97 MW N) and their capital costs reproduce the connection
+# options for Fonterra Edendale in EECA (2022), Regional Energy Transition Accelerator (RETA):
+# Southland - Phase One Report, p. 74. [assumptions] are project screening assumptions.
+# (Release staging edit: header comment added; no value changed.)
+[assumptions]
+real_discount_rate = 0.07
+asset_life_years   = 40
+consents_uplift_factor = 1.25
+
+[[upgrades]]
+name = "none"
+capacity_MW = 0
+capex_nzd = 0.0
+lead_time_months = 0
+security_level = "existing"
+
+[[upgrades]]
+name = "fonterra_opt1_N_plus21MW"
+capacity_MW = 21
+capex_nzd = 9_600_000.0
+lead_time_months = 42
+security_level = "N"
+
+[[upgrades]]
+name = "fonterra_opt2_N-1_plus32MW"
+capacity_MW = 32
+capex_nzd = 34_100_000.0
+lead_time_months = 42
+security_level = "N-1"
+
+[[upgrades]]
+name = "fonterra_opt3_N_plus97MW"
+capacity_MW = 97
+capex_nzd = 55_900_000.0
+lead_time_months = 48
+security_level = "N"
+
+
+# PoC-only extension beyond RETA screened menu.
+# Sized to exceed observed required upgrade max (~116.7 MW) for 2035_EB incremental demand.
+# Capital cost: an illustrative screening assumption for this proof of concept. Its derivation
+# is not documented in the project record, and it is not an official or engineering estimate.
+# (Release staging edit: the previous comment cited a per-MW rate from Option 3 that does not
+# reproduce this value; it was replaced. The value itself is unchanged.)
+[[upgrades]]
+name = "fonterra_opt4_N_plus150MW"
+capacity_MW = 150
+capex_nzd = 75_000_000.0
+lead_time_months = 60
+security_level = "N"
+

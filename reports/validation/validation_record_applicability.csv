@@ -1,0 +1,41 @@
+validation_record_id,what_it_records,concerns,status_relative_to_released_files,current_check_in_package
+VAL-001,IEP schema fixtures (6 at the time),included fixtures (now 8),applies,S01
+VAL-002,external-validator fixtures,included fixtures,applies,S02
+VAL-003,future-set registry,included registry,applies,S03
+VAL-004,adapter dry run (historical source bundle),historical generation,historical record,E1 (canonical adapter run)
+VAL-005,adapter write (historical source bundle),historical generation,historical record,S05
+VAL-006,historical artefacts structural validation,included historical artefacts,applies,S05
+VAL-007,historical artefact harness,included historical artefacts,applies,S05
+VAL-008,"historical artefact harness, explicit paths",included historical artefacts,applies,S05
+VAL-009,temporary negative cases (discarded),temporary copies,historical record,none
+VAL-010,registry-backed validation,n/a (deferred),status record,none
+VAL-011,v1.1-target schema,n/a (deferred),status record,none
+VAL-012,release02_100 validation,n/a (deferred),status record,none
+VAL-013,future-varying peak/p95,n/a (not applicable),status record,S10 (shared-trace pattern)
+VAL-014,global run_id registry,n/a (deferred),status record,none
+VAL-015,adapter dry run (canonical),included canonical inputs,applies,E1
+VAL-016,adapter write (canonical),included canonical artefacts,applies,E1
+VAL-017,canonical artefacts structural validation,included canonical artefacts,applies,S04
+VAL-018,"canonical harness, explicit paths",included canonical artefacts,applies,S04
+VAL-019,historical/canonical coexistence,included artefact sets,applies,S06
+VAL-020,real-trace check EB future_0,included artefact and trace,applies,S07
+VAL-021,real-trace check BB future_0,included artefact and trace,applies,S08
+VAL-022,future_5 boundary diagnostic,included artefact and trace,applies,S09
+VAL-023,schema edit adding qualification_codes,included schema,historical event,S01
+VAL-024,canonical regeneration with qualification_codes,included canonical artefacts,applies,E1
+VAL-025,field diff against pre-change snapshot,snapshot not retained,historical record,none (result table included)
+VAL-026,schema fixtures re-run (8),included fixtures,applies,S01
+VAL-027,canonical harness re-run,included canonical artefacts,applies,S04
+VAL-028,external-validator fixtures re-run,included fixtures,applies,S02
+VAL-029,real-trace regression EB future_0,included artefact and trace,applies,S07
+VAL-030,real-trace regression BB future_0,included artefact and trace,applies,S08
+VAL-031,future_5 diagnostic regression,included artefact and trace,applies,S09
+VAL-032,Path A/Path B divergence (reconstructed screen),"included artefacts, menu, futures",applies,"S12, S15"
+VAL-044,BSP schema,included schema (hash matches),applies,S16
+VAL-045,BSP fixtures,historical fixtures,historical record; does not validate released fixtures,S19
+VAL-046,BSP arithmetic; records historical instance SHA-256 3373887e...,historical BSP instance,historical record; does not validate released instance,S17
+VAL-047,BSP identity; records historical artefact_id 37c1647e...,historical BSP instance,historical record; does not validate released instance,S17
+VAL-048,BSP qualification consumer,historical BSP instance,historical record; does not validate released instance,S18
+VAL-049,protected-file integrity in private repository,private repository files,historical record; not reproducible from package,none
+VAL-050,"real-trace freeze re-run, future_0",included artefacts and traces,applies,"S07, S08"
+VAL-051,six-case downstream consumer,included consumer and inputs,applies (script copy revised: output option and manifest wording only),S13

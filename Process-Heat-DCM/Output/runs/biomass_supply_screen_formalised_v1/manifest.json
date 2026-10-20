@@ -1,0 +1,48 @@
+{
+  "bundle_version": "biomass_supply_screen_formalised_v1",
+  "output_run_id": "biomass_supply_screen_formalised_v1",
+  "created_utc": "2026-10-12T03:28:38Z",
+  "authorising_document": "docs/85_phase3b_biomass_supply_representation_formalisation_authorisation.qmd",
+  "script_identity": "Process-Heat-DCM/src/biomass_supply_screen.py",
+  "module_version": "UNAVAILABLE_no_independent_module_version",
+  "geographic_boundary": "Southland-only",
+  "canonical_upstream_dispatch_bundle": "dispatch_optimal_subset_canonical_continuous_v1",
+  "canonical_bb1_summary_input_path": "Process-Heat-DCM/Output/runs/dispatch_optimal_subset_canonical_continuous_v1/epoch2035_BB/dispatch/optimal_subset_run/site_dispatch_2035_BB_summary_opt.csv",
+  "assumptions_toml_path": "Process-Heat-DCM/Input/configs/biomass_supply_screen_assumptions.toml",
+  "assumptions_toml_sha256": "57123eaeb941f6b2edf26e94d085703c7f2b7034917a73b1c0d385fbc566f191",
+  "evidence_ids": [
+    "EV-0050",
+    "EV-0051",
+    "EV-0052",
+    "EV-0053",
+    "EV-0054",
+    "EV-0055"
+  ],
+  "source_ids": [
+    "SRC-NZ-EECA-RETASOUTHLANDPHASE1-2022",
+    "SRC-NZ-EECA-RETASOUTHISLANDPHASE1-2024"
+  ],
+  "model_input_ids": [
+    "INP-0020",
+    "INP-0021",
+    "INP-0022",
+    "INP-0023",
+    "INP-0024",
+    "INP-0025",
+    "INP-0026",
+    "INP-0027"
+  ],
+  "source_vintage_note": "EECA Southland RETA Phase One Report dated 2022-10 (SRC-NZ-EECA-RETASOUTHLANDPHASE1-2022); EV-0052 delivered-cost tiers use PF Olsen analysis of AgriHQ Forestry Log Price Report (Southern South Island 3-year average prices to September 2021).",
+  "legacy_baseline_bundle": "biomass_supply_screen_v1",
+  "legacy_baseline_bundle_not_modified_by_this_write": true,
+  "output_files": [
+    "biomass_supply_screen_summary.csv",
+    "biomass_supply_tier_allocation.csv",
+    "manifest.json"
+  ],
+  "output_file_sha256": {
+    "biomass_supply_screen_summary.csv": "bb9e6597b02982cb9e6e25a9f9d5a46aefc6b2067f403764e8b7c115c1329b1c",
+    "biomass_supply_tier_allocation.csv": "b49a11961872fbf1e149523e0226903d8f41763f9cd90e9bcc5a8b2956108f74"
+  },
+  "note_schema": "Standalone provenance sidecar for the formalised biomass supply screen. Not a BiomassSupplyPack JSON Schema. No schema file is created by Phase 3B (docs/85 Section 8). SHA-256 is recorded for the two numerical CSVs; this manifest is excluded from its own hash set because it contains a creation timestamp."
+}

@@ -1,0 +1,14 @@
+{
+  "annual_incremental_mwh": 893454.5454545454,
+  "artefact_family": "IncrementalElectricityPack",
+  "artefact_id": "0de14129-7c60-5939-992c-dee7b7eb9473",
+  "epoch": 2035,
+  "future_id": 7,
+  "p95_incremental_mw": 123.78421537855188,
+  "pathway_id": "2035_EB",
+  "peak_incremental_mw": 132.99833179111545,
+  "run_id": "ADAPTER-anchor21-realoutput-release02-2035_EB",
+  "schema_version": "v1.0-current",
+  "site_id": "edendale_fonterra",
+  "validation_outcome": "manual_review_required"
+}

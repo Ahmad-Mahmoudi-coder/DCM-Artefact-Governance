@@ -1,0 +1,5 @@
+tier_id,label,tier_capacity_gj,drawn_gj,cost_nzd_per_gj_low,cost_nzd_per_gj_high,fully_drawn
+1,Processor residues and billetwood,28000.0,28000.0,9.0,9.0,True
+2,In-forest / harvesting residues,550000.0,550000.0,11.0,12.0,True
+3,"Export chip (domestic pulp logs excluded, contracted elsewhere)",360000.0,360000.0,14.0,14.0,True
+4,"Export logs (grades KIS, KI, K, A)",1800000.0,517585.8823529412,18.0,23.0,False

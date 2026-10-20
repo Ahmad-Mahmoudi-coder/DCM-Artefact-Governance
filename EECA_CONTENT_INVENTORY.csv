@@ -1,0 +1,28 @@
+path,eeca_content,detail
+DATA_SOURCES.md,restates or derives from EECA values,attribution table citing values
+Process-Heat-DCM/Input/configs/biomass_supply_screen_assumptions.toml,EECA source values,"pp.53-56: pool totals, tier quantities, moisture, NCV, delivered costs; one quoted sentence (s7.6)"
+Process-Heat-DCM/Input/configs/grid_upgrades_southland_edendale.toml,EECA source values,"p.74 options 1-3: capacity, security, capital cost"
+Process-Heat-DCM/Output/runs/biomass_supply_pack_v1/biomass_supply_pack.v1.0.json,restates or derives from EECA values,"restated pool totals, 60 km; derived shares"
+Process-Heat-DCM/Output/runs/biomass_supply_screen_formalised_v1/biomass_supply_screen_summary.csv,restates or derives from EECA values,restated pool/moisture/NCV; derived shares and costs
+Process-Heat-DCM/Output/runs/biomass_supply_screen_formalised_v1/biomass_supply_tier_allocation.csv,restates or derives from EECA values,restated tier costs; derived GJ capacities and draws
+Process-Heat-DCM/Output/runs/biomass_supply_screen_formalised_v1/manifest.json,restates or derives from EECA values,method notes
+Process-Heat-DCM/Output/runs/dispatch_optimal_subset_canonical_continuous_v1/rdm/rdm_summary_2035_BB.csv,restates or derives from EECA values,option names/capacities; annualised costs derived from EECA capex
+Process-Heat-DCM/Output/runs/dispatch_optimal_subset_canonical_continuous_v1/rdm/rdm_summary_2035_EB.csv,restates or derives from EECA values,option names/capacities; annualised costs derived from EECA capex
+Process-Heat-DCM/Output/runs/gxp_downstream_qualification_consumer_v1/gxp_downstream_qualification_consumer_result.csv,restates or derives from EECA values,option names/capacities (no costs)
+Process-Heat-DCM/Output/runs/gxp_downstream_qualification_consumer_v1/manifest.json,restates or derives from EECA values,option names
+Process-Heat-DCM/src/biomass_supply_pack_producer.py,EECA source values,60 km transport-distance basis
+Process-Heat-DCM/src/biomass_supply_screen.py,EECA source values,"docstring/notes: 55% moisture, 7.184 GJ/t, 60 km and 30-120 km distances, method description"
+README.md,restates or derives from EECA values,cites values
+REPRODUCIBILITY_MATRIX.md,restates or derives from EECA values,cites values
+figures/FIGURES.md,restates or derives from EECA values,cites values
+figures/expected/paper_reported_screening_values.json,restates or derives from EECA values,97 MW tier and NZ$55.9M
+figures/published/fig03_ieps_governance_consequence_gxp_upgrade.pdf,restates or derives from EECA values,plots EECA capacities and costs
+figures/published/fig03_ieps_governance_consequence_gxp_upgrade.png,restates or derives from EECA values,plots EECA capacities and costs
+figures/published/fig2_screening_sensitivity_2035EB_future5.pdf,restates or derives from EECA values,thresholds derived from EECA capacities; no costs
+figures/published/fig2_screening_sensitivity_2035EB_future5.png,restates or derives from EECA values,thresholds derived from EECA capacities; no costs
+reports/validation/validation_summary.v0.2.public_extract.csv,restates or derives from EECA values,VAL-032/046/051 text restates values
+schemas/artefacts/biomass_supply_pack.v1.0-current.schema.json,EECA source values,60 km distance basis in description
+schemas/examples/biomass_supply_pack.invalid.additional_property.json,restates or derives from EECA values,"restated pool totals, 60 km"
+schemas/examples/biomass_supply_pack.invalid.dynamic_competing_demand.json,restates or derives from EECA values,"restated pool totals, 60 km"
+schemas/examples/biomass_supply_pack.invalid.equal_distance_bases.json,restates or derives from EECA values,"restated pool totals, 60 km"
+schemas/examples/biomass_supply_pack.valid.regional_screening_bounded.json,restates or derives from EECA values,"restated pool totals, 60 km"

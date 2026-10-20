@@ -1,0 +1,20 @@
+{
+  "description": "Screening values reported in manuscript Version 9 (Section 5.2 and Figure 2; Figure 3 in Version 8) for 2035_EB future_id 5, used by figures/scripts/verify.py. Tiers of 21, 32 and 97 MW and their costs reproduce EECA (2022) RETA Southland Phase One Report, p. 74; the 150 MW tier and its cost are an illustrative screening assumption with undocumented derivation (see DATA_SOURCES.md).",
+  "pathway_id": "2035_EB",
+  "future_id": 5,
+  "menu_tier_capacities_MW": [
+    0,
+    21,
+    32,
+    97,
+    150
+  ],
+  "path_a_tier_capacity_MW": 97,
+  "path_a_tier_capex_nzd_million": 55.9,
+  "path_b_tier_capacity_MW": 150,
+  "path_b_tier_capex_nzd_million": 75.0,
+  "effective_headroom_MW": 42.5,
+  "path_b_demand_MW": 139.648,
+  "threshold_MW": 139.5,
+  "margin_MW": 0.148
+}

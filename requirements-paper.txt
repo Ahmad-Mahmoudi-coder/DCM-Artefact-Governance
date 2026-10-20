@@ -1,0 +1,23 @@
+# Pinned environment for the paper-specific scripts (tested with CPython 3.12.14 on Linux x86_64).
+# Install: python -m pip install -r requirements-paper.txt
+# Direct requirements: numpy, pandas, jsonschema, matplotlib, pytz (pytz is imported by Process-Heat-DCM/src/time_utils.py).
+# The remaining pins are their resolved dependencies at staging time (2026-10-12).
+attrs==26.1.0
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.66.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+kiwisolver==1.5.1
+matplotlib==3.11.1
+numpy==2.5.2
+packaging==26.3
+pandas==3.0.5
+pillow==12.3.0
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+pytz==2026.5
+referencing==0.37.0
+rpds-py==2026.9.1
+six==1.17.0
+typing-extensions==4.16.0

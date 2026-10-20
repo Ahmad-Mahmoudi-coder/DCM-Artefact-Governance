@@ -1,0 +1,29 @@
+{
+  "bundle_version": "biomass_supply_pack_v1",
+  "semantic_version": "1.0",
+  "schema_version": "v1.0-current",
+  "artefact_family": "BiomassSupplyPack",
+  "artefact_id": "8b425beb-1a3f-583e-b057-2fb049b4a90b",
+  "supported_decision_claim_class": "REGIONAL_SCREENING_BOUNDED",
+  "source_formalised_bundle": "biomass_supply_screen_formalised_v1",
+  "producer_script_identity": "Process-Heat-DCM/src/biomass_supply_pack_producer.py",
+  "authorising_documents": [
+    "docs/87_phase3d_biomasssupplypack_governance_and_artefact_boundary_design.qmd",
+    "docs/88_phase3d_biomasssupplypack_implementation_authorisation.qmd",
+    "docs/89_phase3d_biomasssupplypack_layer1_result_scope_vocabulary_proposal.qmd",
+    "docs/90_phase3d_biomasssupplypack_implementation_decisions.qmd"
+  ],
+  "output_files": [
+    "biomass_supply_pack.v1.0.json",
+    "manifest.json"
+  ],
+  "output_file_sha256": {
+    "biomass_supply_pack.v1.0.json": "fdf369ee259bb60585c01e22583c4ea069063597877843f81e3eed9e5e00730f"
+  },
+  "source_file_sha256": {
+    "biomass_supply_screen_summary.csv": "bb9e6597b02982cb9e6e25a9f9d5a46aefc6b2067f403764e8b7c115c1329b1c",
+    "manifest.json": "2de9aacd9c3b8f0454c88f88b189269aa0c8dbdb6809908d3d6a665e6de5a122"
+  },
+  "assumptions_toml_sha256": "57123eaeb941f6b2edf26e94d085703c7f2b7034917a73b1c0d385fbc566f191",
+  "note": "Sidecar identity/hash record for the first BiomassSupplyPack instance. Not a schema instance. Does not modify any legacy biomass bundle."
+}

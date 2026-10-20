@@ -1,0 +1,34 @@
+# Citation metadata for this archive, release v1.0.0. Code: MIT (LICENSE); original data and
+# documentation: CC BY 4.0 (LICENSE-DATA.md); third-party values excluded. No DOI has been assigned.
+cff-version: 1.2.0
+message: "If you use this software or data, please cite this release."
+type: software
+title: "DCM Artefact Governance: research-software and artefact archive"
+version: "1.0.0"
+repository-code: "https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance"
+license:
+  - MIT
+  - CC-BY-4.0
+authors:
+  - family-names: "Mahmoudi Lahijani"
+    given-names: "Seyed Ahmad"
+    affiliation: "Auckland University of Technology"
+    orcid: "https://orcid.org/0000-0002-5086-5745"
+keywords:
+  - decision-centred modelling
+  - deep uncertainty
+  - artefact governance
+  - provenance
+  - data validation
+  - infrastructure planning
+abstract: >-
+  Research-software and artefact archive accompanying the DCM Artefact Governance paper, "An
+  Artefact-Level Governance Pattern for Model Outputs Under Deep Uncertainty", which is in
+  preparation. It contains schemas, governed artefacts, hourly
+  incremental-electricity traces, future-specific multipliers, validators, fixtures, screening
+  calculations and figure scripts. A single command re-executes the documented
+  IncrementalElectricityPack and BiomassSupplyPack checks and calculations and regenerates Figure 2
+  from the supplied inputs. The archive does not regenerate the upstream model run or the
+  future-specific multipliers, and it does not validate the underlying models. Values reproduced
+  from EECA (2022) are third-party material, attributed in DATA_SOURCES.md. The manuscript is not
+  included.

@@ -1,0 +1,13 @@
+{
+  "artefact_id": "12ab445b-3b2c-4826-b7f1-c8cd1137ff3c",
+  "schema_version": "v1.0-current",
+  "artefact_family": "IncrementalElectricityPack",
+  "site_id": "edendale_fonterra",
+  "run_id": "test_fixture_valid_trace_match",
+  "future_id": 0,
+  "pathway_id": "2035_BB",
+  "epoch": 2035,
+  "annual_incremental_mwh": 100.0,
+  "peak_incremental_mw": 30.0,
+  "p95_incremental_mw": 29.0
+}

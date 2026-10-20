@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dcm.local/schemas/artefacts/biomass_supply_pack/v1.0-current",
+  "title": "BiomassSupplyPack (v1.0-current)",
+  "description": "Structural validation schema for the BiomassSupplyPack artefact family, v1.0-current layer only. Normative basis: docs/87 (design), docs/88 (implementation authorisation), docs/89 (signed-off Layer-1 vocabulary), docs/90 (implementation encodings). This schema checks required-field presence, types, closed-vocabulary membership, and numeric bounds. It does NOT validate source authority or credibility of EECA, PF Olsen, Ahika, or Beca; it does NOT certify exact transcription or extraction fidelity from primary reports that are not held; it does NOT re-derive or certify the physical truth of the external regional resource estimate; and it does NOT treat Layer-1 membership as a validation-gate outcome. Evidential checks that a separate validator may perform are limited to derived arithmetic of this artefact's own declared inputs and to source-identity/registration lookup. Layer-2 properties declare limitations; they do not establish seasonal capability, dynamic competing-demand modelling, contractual access, GIS/route feasibility, site feasibility, or dispatch feasibility. additionalProperties is false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artefact_id",
+    "semantic_version",
+    "schema_version",
+    "artefact_family",
+    "supported_decision_claim_class",
+    "geographic_boundary",
+    "temporal_resolution",
+    "resource_quantity_character",
+    "competing_demand_treatment",
+    "accessibility_radius",
+    "accessibility_basis",
+    "transport_cost_distance_basis",
+    "contractual_access_status",
+    "regional_pool_total_tonnes_per_year",
+    "regional_pool_total_tj_per_year",
+    "conditional_tonnes_per_year",
+    "canonical_bb1_annual_fuel_MWh",
+    "canonical_bb1_annual_fuel_GJ",
+    "bb1_share_of_regional_pool_mass_basis_pct",
+    "bb1_share_of_regional_pool_energy_basis_pct",
+    "physical_limit_binding_indicator",
+    "evidence_ids",
+    "evidence_source_vintage",
+    "canonical_upstream_dispatch_bundle",
+    "canonical_bb1_summary_input_path",
+    "assumptions_toml_sha256",
+    "assumptions_toml_path",
+    "producer_script_identity",
+    "source_formalised_bundle"
+  ],
+  "properties": {
+    "artefact_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Per-instance identity, distinct from semantic_version and schema_version (docs/88 section 5). UUID5 assembled from family, semantic version, formalised-summary SHA-256, assumptions-TOML SHA-256, and upstream dispatch-bundle identity (docs/90 section 4). Unit: none (identifier). Not a validation outcome."
+    },
+    "semantic_version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Family semantic version. Incremented only on material semantic change to evidence, relevant assumptions, derivation logic, or governed interpretation (docs/87 section 9; docs/88 section 5). A routine upstream rerun produces a new artefact_id under the same semantic_version. Unit: none (version label)."
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "v1.0-current",
+      "description": "Contract-layer identity for this schema file, following the IncrementalElectricityPack v1.0-current convention (docs/88 section 8). Distinct from artefact_id. Unit: none (contract label)."
+    },
+    "artefact_family": {
+      "type": "string",
+      "const": "BiomassSupplyPack",
+      "description": "Fixed family label for this distinct candidate artefact family (docs/87 section 10). Presence of this label does not by itself establish a fully demonstrated second governed family or Paper 1 inclusion (docs/88 section 1, section 18)."
+    },
+    "supported_decision_claim_class": {
+      "type": "string",
+      "enum": [
+        "REGIONAL_SCREENING_BOUNDED"
+      ],
+      "description": "Layer 1 result-scope/status: the class of decision claim this instance supports (docs/89 signed-off field). Closed one-member vocabulary. REGIONAL_SCREENING_BOUNDED means a bounded regional-screening claim only. This is not a validation outcome, not an evidence-status grade, not IncrementalElectricityPack qualification_codes, and not a certification of the underlying external biomass estimates. Site-level feasibility, dispatch feasibility, seasonal capability, contractual access, and procurement readiness are not supported claim classes."
+    },
+    "geographic_boundary": {
+      "type": "string",
+      "const": "Southland-only",
+      "description": "Layer 2 declared limitation: the pool is Southland-regional, not site-specific (docs/88 section 3.2). Does not establish site-level accessibility. Copied from the formalised bundle. Unit: none (boundary label)."
+    },
+    "temporal_resolution": {
+      "type": "string",
+      "enum": [
+        "ANNUAL_AGGREGATE"
+      ],
+      "description": "Layer 2 declared limitation: the quantities are an annual aggregate, not a seasonal or monthly profile (docs/87 section 2, section 7; docs/90 section 5). Does not supply or model seasonal availability. Unit: none (resolution label)."
+    },
+    "resource_quantity_character": {
+      "type": "string",
+      "const": "STATIC_EXTERNALLY_SOURCED_MULTI_YEAR_AVERAGE_not_computed_or_rederived",
+      "description": "Layer 2 declared limitation: the regional pool is a static, externally sourced, multi-year average and is not computed or re-derived by this project (docs/87 section 6). Copied from the formalised bundle field regional_resource_quantity_character. Does not certify physical truth of that external estimate."
+    },
+    "competing_demand_treatment": {
+      "type": "string",
+      "enum": [
+        "PARTIAL_STATIC_NETTING"
+      ],
+      "description": "Layer 2 declared limitation: competing demand is only partially and statically netted (docs/87 section 7; docs/90 section 5). Does not perform dynamic competing-demand modelling and cannot represent a dynamic-netting claim."
+    },
+    "accessibility_radius": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Layer 2 declared limitation: eligibility/scoping radius. Unit: km. First authorised instance uses 100. This is not a cost-calculation input and is not a demonstration of delivery feasibility. Must remain distinct from transport_cost_distance_basis (docs/88 section 3.2)."
+    },
+    "accessibility_basis": {
+      "type": "string",
+      "enum": [
+        "ELIGIBILITY_SCOPING"
+      ],
+      "description": "Layer 2 declared limitation: accessibility_radius is an eligibility/scoping framing, not a cost-calculation parameter (docs/87 section 7)."
+    },
+    "transport_cost_distance_basis": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Layer 2 declared limitation: illustrative transport-distance assumption embedded in the published delivered-cost tiers. Unit: km. First authorised instance uses 60. Kept as a separate property from accessibility_radius; the 60 km / 100 km relationship remains unresolved (docs/84 section 3; docs/87 section 2). Does not establish a transport model."
+    },
+    "contractual_access_status": {
+      "type": "string",
+      "enum": [
+        "NOT_ESTABLISHED"
+      ],
+      "description": "Layer 2 declared limitation: contractual or licensed access has not been established (docs/87 section 7). Does not hold contractual or licensing records."
+    },
+    "regional_pool_total_tonnes_per_year": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Annual regional accessible resource, mass basis. Copied from the formalised bundle / EV-0050 transcription already held there. Unit: tonnes/year. Copied, not re-derived. Presence does not validate the external estimate."
+    },
+    "regional_pool_total_tj_per_year": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Annual regional accessible resource, energy basis. Copied from the formalised bundle. Unit: TJ/year. Copied, not re-derived."
+    },
+    "conditional_tonnes_per_year": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "BB1 annual biomass requirement, mass basis, already derived in the formalised screen from the canonical BB1 dispatch summary. Unit: tonnes/year. Copied from the formalised bundle; not recomputed by the BiomassSupplyPack producer."
+    },
+    "canonical_bb1_annual_fuel_MWh": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "BB1 annual fuel requirement. Unit: MWh_fuel/year. Copied from the formalised bundle."
+    },
+    "canonical_bb1_annual_fuel_GJ": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "BB1 annual fuel requirement. Unit: GJ/year. Copied from the formalised bundle."
+    },
+    "bb1_share_of_regional_pool_mass_basis_pct": {
+      "type": "number",
+      "minimum": 0,
+      "description": "BB1 share of the regional pool, mass basis. Unit: percent. Derived in the formalised bundle as 100 * conditional_tonnes_per_year / regional_pool_total_tonnes_per_year. Independently re-derived by the BiomassSupplyPack validator. Not a site-feasibility determination."
+    },
+    "bb1_share_of_regional_pool_energy_basis_pct": {
+      "type": "number",
+      "minimum": 0,
+      "description": "BB1 share of the regional pool, energy basis. Unit: percent. Derived in the formalised bundle from canonical_bb1_annual_fuel_GJ and regional_pool_total_tj_per_year. Independently re-derived by the validator."
+    },
+    "physical_limit_binding_indicator": {
+      "type": "boolean",
+      "description": "Copied from the formalised bundle. True only if the regional screening representation indicates the pool is exhausted relative to the declared requirement. False does not establish site-level feasibility. Contextual validator check: must be false when mass-basis share is less than 100."
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^EV-[0-9]{4}$"
+      },
+      "description": "Record-level source-identity bag copied from the formalised bundle. Registers identity of cited evidence IDs only. Does not assert source authority, quantity-level mapping, or physical truth (docs/87 section 4, section 6)."
+    },
+    "evidence_source_vintage": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Record-level evidence/source vintage copied from the formalised source_vintage_note. Staleness signal only. Not an independent vintage validation."
+    },
+    "canonical_upstream_dispatch_bundle": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Upstream run-family identity copied from the formalised bundle. Unit: none (identifier)."
+    },
+    "canonical_bb1_summary_input_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path identity of the canonical BB1 dispatch summary used by the formalised screen. Copied. Known absolute-path portability limitation (docs/87 section 8). Unit: none (path)."
+    },
+    "assumptions_toml_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 (hex, lowercase) of biomass_supply_screen_assumptions.toml as recorded in the formalised bundle. Recomputed by the validator from the live file (read-only). Unit: none (checksum)."
+    },
+    "assumptions_toml_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path identity of the assumptions file whose checksum is recorded. Copied from the formalised bundle. Unit: none (path)."
+    },
+    "producer_script_identity": {
+      "type": "string",
+      "const": "Process-Heat-DCM/src/biomass_supply_pack_producer.py",
+      "description": "Computational provenance of this governed instance (docs/88 section 6). Distinct from the formalised screen script, which remains unmodified."
+    },
+    "source_formalised_bundle": {
+      "type": "string",
+      "const": "biomass_supply_screen_formalised_v1",
+      "description": "Read-only source bundle identity for this producer (docs/88 section 11). Not a write target."
+    },
+    "source_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-.+"
+      },
+      "description": "Optional. Record-level source-register identifiers copied from the formalised bundle. Source identity/registration only. Not a source-authority assessment (docs/87 section 6)."
+    },
+    "tier_allocation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tier_id",
+          "label",
+          "tier_capacity_gj",
+          "drawn_gj",
+          "cost_nzd_per_gj_low",
+          "cost_nzd_per_gj_high",
+          "fully_drawn"
+        ],
+        "properties": {
+          "tier_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "label": {
+            "type": "string"
+          },
+          "tier_capacity_gj": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Unit: GJ/year."
+          },
+          "drawn_gj": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Unit: GJ/year."
+          },
+          "cost_nzd_per_gj_low": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Unit: NZD/GJ."
+          },
+          "cost_nzd_per_gj_high": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Unit: NZD/GJ."
+          },
+          "fully_drawn": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Optional. Per-tier allocation copied from the existing formalised allocation CSV. Not required for regional screening. Not a transport, GIS, or supply-chain model."
+    },
+    "weighted_delivered_cost_nzd_per_gj_low": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Optional. Weighted delivered cost, low. Unit: NZD/GJ. If any delivered-cost property is present, price_basis_status must also be present. Does not establish procurement or funding readiness."
+    },
+    "weighted_delivered_cost_nzd_per_gj_mid": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Optional. Weighted delivered cost, mid. Unit: NZD/GJ."
+    },
+    "weighted_delivered_cost_nzd_per_gj_high": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Optional. Weighted delivered cost, high. Unit: NZD/GJ."
+    },
+    "price_basis_status": {
+      "type": "string",
+      "enum": [
+        "PRICE_BASIS_PARTIALLY_CONFIRMED"
+      ],
+      "description": "Optional. Qualifier required alongside any delivered-cost property (docs/87 section 2). Existing formalised token. Does not validate underlying cost-survey estimates."
+    },
+    "merit_order_intact_at_marginal_high": {
+      "type": "boolean",
+      "description": "Optional. Merit-order indicator from the formalised bundle. Relevant only to bounded relative cost comparison, not to regional screening."
+    },
+    "limitations_caveats": {
+      "type": "string",
+      "description": "Optional. Free-text supplement. Cannot substitute for Layer 1 or Layer 2 (docs/87 section 2). A qualification-consumer test must not read this field."
+    }
+  }
+}

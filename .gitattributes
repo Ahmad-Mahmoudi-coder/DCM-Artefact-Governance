@@ -1,0 +1,5 @@
+# Keep every file byte-identical across platforms: recorded SHA-256 values and
+# content-derived identifiers depend on exact bytes.
+* -text
+*.png binary
+*.pdf binary

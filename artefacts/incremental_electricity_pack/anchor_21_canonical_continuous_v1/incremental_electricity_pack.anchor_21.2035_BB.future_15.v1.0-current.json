@@ -1,0 +1,17 @@
+{
+  "annual_incremental_mwh": 499326.0606060606,
+  "artefact_family": "IncrementalElectricityPack",
+  "artefact_id": "c358c710-8972-5913-8738-a3ac0f1332d5",
+  "epoch": 2035,
+  "future_id": 15,
+  "p95_incremental_mw": 83.38017497451146,
+  "pathway_id": "2035_BB",
+  "peak_incremental_mw": 92.59429138707506,
+  "qualification_codes": [
+    "FIELD_INVARIANT_ACROSS_FUTURES_WITHIN_PATHWAY"
+  ],
+  "run_id": "ADAPTER-anchor21-realoutput-canonical_continuous_v1-2035_BB",
+  "schema_version": "v1.0-current",
+  "site_id": "edendale_fonterra",
+  "validation_outcome": "manual_review_required"
+}

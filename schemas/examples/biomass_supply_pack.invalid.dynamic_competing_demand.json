@@ -1,0 +1,42 @@
+{
+  "artefact_id": "8b425beb-1a3f-583e-b057-2fb049b4a90b",
+  "semantic_version": "1.0",
+  "schema_version": "v1.0-current",
+  "artefact_family": "BiomassSupplyPack",
+  "supported_decision_claim_class": "REGIONAL_SCREENING_BOUNDED",
+  "geographic_boundary": "Southland-only",
+  "temporal_resolution": "ANNUAL_AGGREGATE",
+  "resource_quantity_character": "STATIC_EXTERNALLY_SOURCED_MULTI_YEAR_AVERAGE_not_computed_or_rederived",
+  "competing_demand_treatment": "DYNAMIC_NETTING",
+  "accessibility_radius": 100,
+  "accessibility_basis": "ELIGIBILITY_SCOPING",
+  "transport_cost_distance_basis": 60,
+  "contractual_access_status": "NOT_ESTABLISHED",
+  "regional_pool_total_tonnes_per_year": 380500.0,
+  "regional_pool_total_tj_per_year": 2738.0,
+  "conditional_tonnes_per_year": 202614.9613520241,
+  "canonical_bb1_annual_fuel_MWh": 404329.4117647059,
+  "canonical_bb1_annual_fuel_GJ": 1455585.8823529412,
+  "bb1_share_of_regional_pool_mass_basis_pct": 53.24966132773301,
+  "bb1_share_of_regional_pool_energy_basis_pct": 53.16237700339449,
+  "physical_limit_binding_indicator": false,
+  "evidence_ids": [
+    "EV-0050",
+    "EV-0051",
+    "EV-0052",
+    "EV-0053",
+    "EV-0054",
+    "EV-0055"
+  ],
+  "source_ids": [
+    "SRC-NZ-EECA-RETASOUTHLANDPHASE1-2022",
+    "SRC-NZ-EECA-RETASOUTHISLANDPHASE1-2024"
+  ],
+  "evidence_source_vintage": "EECA Southland RETA Phase One Report dated 2022-10 (SRC-NZ-EECA-RETASOUTHLANDPHASE1-2022); EV-0052 delivered-cost tiers use PF Olsen analysis of AgriHQ Forestry Log Price Report (Southern South Island 3-year average prices to September 2021).",
+  "canonical_upstream_dispatch_bundle": "dispatch_optimal_subset_canonical_continuous_v1",
+  "canonical_bb1_summary_input_path": "Process-Heat-DCM/Output/runs/dispatch_optimal_subset_canonical_continuous_v1/epoch2035_BB/dispatch/optimal_subset_run/site_dispatch_2035_BB_summary_opt.csv",
+  "assumptions_toml_sha256": "57123eaeb941f6b2edf26e94d085703c7f2b7034917a73b1c0d385fbc566f191",
+  "assumptions_toml_path": "Process-Heat-DCM/Input/configs/biomass_supply_screen_assumptions.toml",
+  "producer_script_identity": "Process-Heat-DCM/src/biomass_supply_pack_producer.py",
+  "source_formalised_bundle": "biomass_supply_screen_formalised_v1"
+}

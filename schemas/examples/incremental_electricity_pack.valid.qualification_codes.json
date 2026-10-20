@@ -1,0 +1,16 @@
+{
+  "artefact_id": "3f7e1c2a-9b4d-4e2a-8c1a-1a2b3c4d5e6f",
+  "schema_version": "v1.0-current",
+  "artefact_family": "IncrementalElectricityPack",
+  "site_id": "edendale_fonterra",
+  "run_id": "20260106_085759_epoch2035_demandpack_2035",
+  "future_id": 0,
+  "pathway_id": "2035_BB",
+  "epoch": 2035,
+  "annual_incremental_mwh": 592939.5973030096,
+  "peak_incremental_mw": 94.99880842222532,
+  "p95_incremental_mw": 88.41729669896563,
+  "validation_outcome": "pass",
+  "warning_codes": [],
+  "qualification_codes": ["FIELD_INVARIANT_ACROSS_FUTURES_WITHIN_PATHWAY"]
+}
