@@ -1,5 +1,22 @@
 # Release notes
 
+## v1.0.2 (prepared 22 October 2026)
+
+Metadata-only release that makes the IEP qualification code interpretable from the archive alone.
+
+- Added `QUALIFICATION_CODES.md`, which defines `FIELD_INVARIANT_ACROSS_FUTURES_WITHIN_PATHWAY`: the
+  artefacts it applies to, how it is assigned, the assessed use, the affected fields
+  (`peak_incremental_mw`, `p95_incremental_mw`), the limitation, the supported and unsupported
+  interpretations, the basis for the judgement and the implementation records.
+- README: pointer to the new file; release tag; concept DOI (10.5281/zenodo.23519538); citation;
+  the associated paper's current title; a note on manuscript figure numbering.
+- `CITATION.cff`: version 1.0.2, concept DOI and paper title; both licences retained.
+- `.zenodo.json`: version 1.0.2, paper title, pointer to the new file and updated notes.
+- `PROVENANCE.csv` and `MANIFEST.sha256` updated for the changed and added files.
+- No code, schema, input, artefact, expected value or figure changed. `python reproduce.py`:
+  27 steps, all passing in a clean CPython 3.12 environment.
+- Earlier tags and GitHub releases are unchanged.
+
 ## v1.0.1 (prepared 21 October 2026)
 
 Metadata-only release so that Zenodo can archive the repository. Zenodo received the GitHub release

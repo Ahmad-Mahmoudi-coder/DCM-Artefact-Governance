@@ -1,17 +1,17 @@
 # DCM Artefact Governance: research-software and artefact archive
 
-> **Release v1.0.1.** Research-software and artefact archive accompanying the DCM Artefact Governance paper. The manuscript is not included.
+> **Release v1.0.2.** Research-software and artefact archive accompanying the DCM Artefact Governance paper. The manuscript is not included.
 >
 > | Field | Value |
 > |---|---|
 > | Author | Seyed Ahmad Mahmoudi Lahijani, Auckland University of Technology, ORCID [0000-0002-5086-5745](https://orcid.org/0000-0002-5086-5745) |
 > | Repository | <https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance> |
-> | Release tag | `v1.0.1` |
-> | Archive DOI | Assigned by Zenodo when this release is archived and shown on the Zenodo record; not recorded in this file. Release v1.0.0 was received by Zenodo but not archived |
+> | Release tag | `v1.0.2` |
+> | Archive DOI | Concept DOI (all versions): [10.5281/zenodo.23519538](https://doi.org/10.5281/zenodo.23519538). The version DOI of each release is shown on its Zenodo record. Release v1.0.0 was received by Zenodo but not archived |
 > | Licence | Code: MIT (`LICENSE`). Original data and documentation: CC BY 4.0 (`LICENSE-DATA.md`). Third-party values excluded (see *Licensing*) |
 
 This repository is the research-software and artefact archive accompanying the DCM Artefact
-Governance paper, *An Artefact-Level Governance Pattern for Model Outputs Under Deep Uncertainty*,
+Governance paper, *Use-Relative Governance of Model-Derived Artefacts Across Modular Modelling Boundaries Under Deep Uncertainty*,
 which is in preparation for *Environmental Modelling & Software*. It contains the schemas, code, fixtures,
 governed artefacts, input data and figure scripts needed to re-run the paper's governance checks,
 recomputations, screening calculations and Figure 2. **The manuscript itself is not included.**
@@ -24,6 +24,9 @@ identity, provenance and use-specific qualification, using two artefact families
 
 - the IncrementalElectricityPack (IEP), passed from process-heat analysis to a grid-adequacy screen;
 - the BiomassSupplyPack (BSP), a narrower regional resource-screening example.
+
+The meaning of the IEP qualification code, including the fields it affects and the inferences it
+does and does not support, is defined in `QUALIFICATION_CODES.md`.
 
 Both come from the author's doctoral research on Decision-Centred Modelling (DCM) and its
 industrial process-heat proof of concept for the Edendale dairy site, New Zealand (Auckland
@@ -86,8 +89,9 @@ validation of the underlying process-heat, dispatch or biomass-resource models.
 | `DATA_SOURCES.md` | Attribution of all values taken from published reports |
 | `EECA_CONTENT_INVENTORY.csv` | Every file that states, restates or derives from EECA (2022) values |
 | `PROVENANCE.csv`, `MANIFEST.sha256` | Per-file origin and integrity |
-| `CITATION.cff` | Citation metadata (draft) |
-| `RELEASE_NOTES.md` | Release note |
+| `CITATION.cff` | Citation metadata |
+| `QUALIFICATION_CODES.md` | Definition of the IEP qualification code: assessed use, affected fields, limitation, supported and unsupported interpretations, basis for the judgement |
+| `RELEASE_NOTES.md` | Release notes |
 
 `Process-Heat-DCM/` keeps the name of the source repository because the scripts locate files relative
 to it and recorded producer identities use that name. Only the files listed in `PROVENANCE.csv` are
@@ -122,7 +126,9 @@ by `figures/scripts/render_fig2_screening.py` (S21) from the screening code and 
 S22 checks that the regenerated PNG and PDF are byte-identical to
 `figures/published/fig2_screening_sensitivity_2035EB_future5.{png,pdf}`; the PNG is the image placed
 in the manuscript. S20 derives the tier thresholds and the Path A/Path B selections directly from the
-screening implementation and compares them with the reported values.
+screening implementation and compares them with the reported values. In the version of the manuscript
+submitted for review, this screening-sensitivity figure is **Figure 3**; Figure 2 there is a conceptual
+diagram of the governance lifecycle and is not generated from data.
 
 `render_fig2.py` and `render_fig3.py` (S11, S15) render the two data figures of manuscript Version 8.
 They are kept as supplementary checks and are not in Version 9; their published files were rendered
@@ -199,10 +205,11 @@ private research record; those documents are not part of this release.
 Please cite this release. Machine-readable metadata are in `CITATION.cff`.
 
 - **This archive:** Mahmoudi Lahijani, S. A. (2026). *DCM Artefact Governance: research-software
-  and artefact archive* (Version 1.0.1) [Software]. GitHub.
-  https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance/releases/tag/v1.0.1
-- **Associated paper:** the DCM Artefact Governance paper, *An Artefact-Level Governance Pattern for
-  Model Outputs Under Deep Uncertainty*, is in preparation. Its full reference will be added here
+  and artefact archive* (Version 1.0.2) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23519538
+  (concept DOI; the record for each version gives its own DOI). Source:
+  https://github.com/Ahmad-Mahmoudi-coder/DCM-Artefact-Governance/releases/tag/v1.0.2
+- **Associated paper:** the DCM Artefact Governance paper, *Use-Relative Governance of Model-Derived Artefacts Across Modular Modelling Boundaries Under Deep Uncertainty*,
+  is in preparation. Its full reference will be added here
   on publication.
 
 Cite the release tag you used.

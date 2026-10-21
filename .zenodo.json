@@ -1,7 +1,7 @@
 {
   "upload_type": "software",
   "title": "DCM Artefact Governance: research-software and artefact archive",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "creators": [
     {
       "name": "Mahmoudi Lahijani, Seyed Ahmad",
@@ -9,7 +9,7 @@
       "orcid": "0000-0002-5086-5745"
     }
   ],
-  "description": "<p>Research-software and artefact archive accompanying the DCM Artefact Governance paper, <em>An Artefact-Level Governance Pattern for Model Outputs Under Deep Uncertainty</em>, which is in preparation for <em>Environmental Modelling &amp; Software</em>. The manuscript is not included.</p><p>The archive contains IncrementalElectricityPack and BiomassSupplyPack schemas, governed artefacts, hourly incremental-electricity traces, future-specific multipliers, validators, fixtures, screening calculations and figure scripts. The single command <code>python reproduce.py</code> re-executes the documented checks and calculations and regenerates Figure 2 from the supplied inputs. The archive does not regenerate the upstream process-heat dispatch model run or the future-specific multipliers, and passing the checks does not validate the underlying models or the third-party source estimates.</p><p><strong>Licensing.</strong> The licence field of this record shows MIT because a Zenodo record holds a single licence identifier. The archive's licensing is set by the licence files it contains, which remain authoritative: source code, JSON Schemas, test fixtures and build configuration are licensed under MIT (<code>LICENSE</code>); original project data, figures and documentation are licensed under CC BY 4.0 (<code>LICENSE-DATA.md</code>); values reproduced from Energy Efficiency and Conservation Authority (EECA) (2022), <em>Regional Energy Transition Accelerator (RETA): Southland – Phase One Report</em>, are third-party material excluded from both licences and remain subject to their source's terms (see <code>LICENSE-DATA.md</code>, <code>DATA_SOURCES.md</code> and <code>EECA_CONTENT_INVENTORY.csv</code>).</p>",
+  "description": "<p>Research-software and artefact archive accompanying the DCM Artefact Governance paper, <em>Use-Relative Governance of Model-Derived Artefacts Across Modular Modelling Boundaries Under Deep Uncertainty</em>, which is in preparation for <em>Environmental Modelling &amp; Software</em>. The manuscript is not included.</p><p>The archive contains IncrementalElectricityPack and BiomassSupplyPack schemas, governed artefacts, hourly incremental-electricity traces, future-specific multipliers, validators, fixtures, screening calculations and figure scripts. The single command <code>python reproduce.py</code> re-executes the documented checks and calculations and regenerates the screening-sensitivity figure from the supplied inputs. The meaning of the IEP qualification code is defined in <code>QUALIFICATION_CODES.md</code>. The archive does not regenerate the upstream process-heat dispatch model run or the future-specific multipliers, and passing the checks does not validate the underlying models or the third-party source estimates.</p><p><strong>Licensing.</strong> The licence field of this record shows MIT because a Zenodo record holds a single licence identifier. The archive's licensing is set by the licence files it contains, which remain authoritative: source code, JSON Schemas, test fixtures and build configuration are licensed under MIT (<code>LICENSE</code>); original project data, figures and documentation are licensed under CC BY 4.0 (<code>LICENSE-DATA.md</code>); values reproduced from Energy Efficiency and Conservation Authority (EECA) (2022), <em>Regional Energy Transition Accelerator (RETA): Southland – Phase One Report</em>, are third-party material excluded from both licences and remain subject to their source's terms (see <code>LICENSE-DATA.md</code>, <code>DATA_SOURCES.md</code> and <code>EECA_CONTENT_INVENTORY.csv</code>).</p>",
   "access_right": "open",
   "license": "mit",
   "keywords": [
@@ -21,5 +21,5 @@
     "infrastructure planning"
   ],
   "language": "eng",
-  "notes": "Version 1.0.1 differs from v1.0.0 only in release metadata (this file, CITATION.cff version, README and release notes); no code, schema, input, artefact, expected value or figure changed. Release v1.0.0 was received by Zenodo but not archived because its citation metadata could not be imported."
+  "notes": "Version 1.0.2 adds QUALIFICATION_CODES.md, which defines the IEP qualification code, and updates release metadata (README, CITATION.cff, this file and the release notes). No code, schema, input, artefact, expected value or figure changed. Version 1.0.1 added this file so that Zenodo could archive the repository; release v1.0.0 was received by Zenodo but not archived because its citation metadata could not be imported."
 }
